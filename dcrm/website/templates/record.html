@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <img src="https://fastly.picsum.photos/id/787/200/300.jpg?hmac=XItcL1ki66gQzP2FwRZjLbruiohUmaOYs9mmlDZe9KE" alt="User Image" width="200" class="float-left">
+
+        <!-- Other card contents on the left side -->
+        <h4 class="card-title">
+            {{ customer_record.first_name }} {{ customer_record.last_name }}
+        </h4>
+        <p class="card-text">
+            <strong>Email: </strong>{{ customer_record.email }}
+        </p>
+        <p class="card-text">
+            <strong>Phone: </strong>{{ customer_record.phone }}
+        </p>
+        <p class="card-text">
+            <strong>Address: </strong>{{ customer_record.address }}
+        </p>
+        <p class="card-text">
+            <strong>City: </strong>{{ customer_record.city }}
+        </p>
+        <p class="card-text">
+            <strong>State: </strong>{{ customer_record.state }}
+        </p>
+        <p class="card-text">
+            <strong>Zipcode: </strong>{{ customer_record.zipcode }}
+        </p>
+        <p class="card-text">
+            <strong>Create At: </strong>{{ customer_record.created_at }}
+        </p>
+        <p class="card-text">
+            <strong>ID: </strong>{{ customer_record.id }}
+        </p>
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+<br/><br/>
+<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+{% endblock %}
