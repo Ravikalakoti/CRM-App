@@ -10,6 +10,10 @@ This CRM (Customer Relationship Management) project is designed to efficiently m
 <b>Add New Customer:</b> Easily add new customer records to expand the database with potential clients.<br>
 <b>Secure Authentication:</b> Robust user authentication and password hashing for enhanced security.<br>
 <b>User Logout:</b> Simple logout functionality to ensure user privacy and session management.<br>
+<b>Blog Posts:</b> Implement a blog section where users can create, view, and manage blog posts.<br>
+<b>View Blog Post:</b> View individual blog posts with full content and author details.<br>
+<b>Add New Blog Post:</b> Allow users to add new blog posts to share insights and updates.<br>
+<b>Author Profile:</b> Display author profiles with their details and a list of published blog posts.<br>
 
 # Technologies Used:
 <b>Django:</b> A powerful Python web framework used for back-end development.<br>
@@ -35,6 +39,17 @@ This section contains screenshots and images related to the CRM project.
 ## Home Page With Records data
 ![Home Page Image With Records](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/Screenshot%20from%202023-08-01%2014-42-29.png)
 
+## Blog List Page
+![Blog List Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/blog_list.png)
+
+## Add New Blog Page
+![Add Blog Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/add_blog.png)
+
+## Blog Details Page
+![Blog Details Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/blog_detail.png)
+
+## User Profile Page
+![User Profile Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/user_profile.png)
 ## Project Status
 
 This CRM project is actively maintained and open for contributions. We welcome your feedback, bug reports, and feature requests.
