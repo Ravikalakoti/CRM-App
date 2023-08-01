@@ -27,3 +27,6 @@ This section contains screenshots and images related to the CRM project.
 ## Registration Page
 
 ![Registration Image](path/to/images/register_image.jpg)
+
+## Home Page With Records data
+![Home Page Image With Records](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/Screenshot%20from%202023-08-01%2014-42-29.png)
