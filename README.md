@@ -20,13 +20,17 @@ This CRM (Customer Relationship Management) project is designed to efficiently m
 # Project Screenshots
 This section contains screenshots and images related to the CRM project.
 
+## Registration Or SignUp Page
+![Registration Image](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/Screenshot%20from%202023-08-01%2014-09-04.png)
+
 ## Login Page
+![Login Image](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/Screenshot%20from%202023-08-01%2014-08-51.png)
 
-![Login Image](path/to/images/login_image.jpg)
-
-## Registration Page
-
+## Add New Record Page
 ![Registration Image](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/Screenshot%20from%202023-08-01%2014-08-37.png)
+
+## Show Record Detail Page
+![Show Record Image](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/Screenshot%20from%202023-08-01%2014-42-14.png)
 
 ## Home Page With Records data
 ![Home Page Image With Records](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/Screenshot%20from%202023-08-01%2014-42-29.png)
