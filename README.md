@@ -34,3 +34,24 @@ This section contains screenshots and images related to the CRM project.
 
 ## Home Page With Records data
 ![Home Page Image With Records](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/Screenshot%20from%202023-08-01%2014-42-29.png)
+
+## Project Status
+
+This CRM project is actively maintained and open for contributions. We welcome your feedback, bug reports, and feature requests.
+
+## Contributing
+
+Contributions to this project are welcome! To contribute, please follow these steps:
+
+1. Fork the repository on GitHub.
+2. Create a new branch with a descriptive name for your feature or bug fix.
+3. Make your changes and commit them with clear and concise commit messages.
+4. Push your changes to your fork.
+5. Submit a pull request, explaining the changes and their purpose.
+
+## Contact
+
+For any questions, suggestions, or inquiries, feel free to contact us at ravikalakoti16@gmail.com.
+
+Thank you for checking out our CRM project! We hope you find it useful and welcome your contributions to make it even better.
+
