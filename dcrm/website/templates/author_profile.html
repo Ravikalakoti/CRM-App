@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">{{ author.first_name }} {{ author.last_name }}</h1>
+            <hr>
+            <p class="card-text"><strong>Email:</strong> {{ author.email }}</p>
+            <p class="card-text"><strong>Last Login:</strong> {{ author.last_login }}</p>
+            <p class="card-text"><strong>Date Joined:</strong> {{ author.date_joined }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

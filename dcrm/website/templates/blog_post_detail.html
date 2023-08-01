@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">{{ post.title }}</h1>
+            <hr>
+            <p class="card-text">{{ post.content }}</p>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    {% if request.user != post.author%}
+                    <p class="card-text"><strong>Author:</strong> <a href="{% url 'author_profile' post.author.id %}">{{ post.author }}</a></p>
+                    {% else %}
+                    <p class="card-text"><strong>Author:</strong>{{ post.author }}</p>
+                    {% endif %}
+                </div>
+                <div class="col-md-6 text-end">
+                    <p class="card-text"><strong>Publication Date:</strong> {{ post.publication_date }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
