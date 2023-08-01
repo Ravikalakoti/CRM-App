@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignUpForm, AddRecordForm
-from .models import Record
+from .forms import SignUpForm, AddRecordForm, BlogPostForm
+from django.contrib.auth.models import User
+from .models import Record, BlogPost
 
 
 def home(request):
@@ -95,3 +96,35 @@ def update_record(request, pk):
 	else:
 		messages.success(request, "You Must Be Logged In...")
 		return redirect('home')
+
+
+def blog_post_list(request):
+    posts = BlogPost.objects.all()
+    return render(request, 'blog_post_list.html', {'posts': posts})
+
+
+def blog_post_detail(request, pk):
+    post = get_object_or_404(BlogPost, pk=pk)
+    return render(request, 'blog_post_detail.html', {'post': post})
+
+
+def add_blog_post(request):
+    if request.method == 'POST':
+        form = BlogPostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('blog_post_detail', pk=post.pk)
+    else:
+        form = BlogPostForm()
+    return render(request, 'add_blog_post.html', {'form': form})
+
+
+def author_profile(request, author_id):
+    author = get_object_or_404(User, id=author_id)
+    return render(request, 'author_profile.html', {'author': author})
+
+
+def edit_profile(request):
+    return render(request, 'edit_profile.html')
