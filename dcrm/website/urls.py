@@ -14,4 +14,7 @@ urlpatterns = [
     path('blog/add/', views.add_blog_post, name='add_blog_post'),
     path('author_profile/<int:author_id>/', views.author_profile, name='author_profile'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
+    path('import/', views.import_records, name='import_records'),
+    path('follow/<int:author_id>/', views.follow_user, name='follow'),
+    path('unfollow/<int:author_id>/', views.unfollow_user, name='unfollow'),
 ]

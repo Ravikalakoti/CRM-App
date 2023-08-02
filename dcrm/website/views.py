@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignUpForm, AddRecordForm, BlogPostForm
+from .forms import SignUpForm, AddRecordForm, BlogPostForm, ExcelImportForm
 from django.contrib.auth.models import User
-from .models import Record, BlogPost
+from .models import Record, BlogPost, UserProfile
+import pandas as pd
 
 
 def home(request):
@@ -123,8 +124,64 @@ def add_blog_post(request):
 
 def author_profile(request, author_id):
     author = get_object_or_404(User, id=author_id)
-    return render(request, 'author_profile.html', {'author': author})
+
+    profile_instance = UserProfile.objects.filter(user=author)
+    if profile_instance:
+    	image_url = profile_instance.last().profile_image.url
+    	user_profile = profile_instance.last()
+    else:
+    	image_url = 'https://images.unsplash.com/photo-1608231857279-40bea0778f5f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=100&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5MDk1NTQ1NQ&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=100'
+    return render(request, 'author_profile.html', {
+    	'author': author,
+    	'image_url': image_url,
+    	'user_profile': user_profile
+    })
 
 
 def edit_profile(request):
     return render(request, 'edit_profile.html')
+
+
+def import_records(request):
+	if request.method == 'POST':
+		form = ExcelImportForm(request.POST, request.FILES)
+		if form.is_valid():
+			file = request.FILES['file']
+			if file.name.endswith('.xlsx'): #If it's not an .xlsx file, pandas will handle it as a CSV file pd.read_csv(file)
+				df = pd.read_excel(file, engine='openpyxl')
+				records = []
+				for _, row in df.iterrows():
+				    record = Record(
+				        first_name=row['First Name'],
+				        last_name=row['Last Name'],
+				        email=row['Email'],
+				        phone=row['Phone'],
+				        address=row['Address'],
+				        city=row['City'],
+				        state=row['State'],
+				        zipcode=row['Zipcode'],
+				    )
+				    records.append(record)
+				Record.objects.bulk_create(records)
+				return redirect('home')
+	else:
+	    form = ExcelImportForm()
+	return render(request, 'import_records.html', {'form': form})
+
+
+def follow_user(request, author_id):
+    author = get_object_or_404(User, id=author_id)
+    author_profile, created = UserProfile.objects.get_or_create(user=author)
+    user_profile = UserProfile.objects.get(user=request.user)
+    author_profile.followers.add(request.user)
+    user_profile.followings.add(author)
+    return redirect('author_profile', author_id=author_id)
+
+
+def unfollow_user(request, author_id):
+    author = get_object_or_404(User, id=author_id)
+    author_profile = UserProfile.objects.get(user=author)
+    user_profile = UserProfile.objects.get(user=request.user)
+    author_profile.followers.remove(request.user)
+    user_profile.followings.remove(author)
+    return redirect('author_profile', author_id=author_id)
