@@ -33,6 +33,9 @@ This section contains screenshots and images related to the CRM project.
 ## Add New Record Page
 ![Registration Image](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/Screenshot%20from%202023-08-01%2014-08-37.png)
 
+## Add multiple records using excel sheet upload data and record creation in bulk
+![Upload Excele File Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/import.png)
+
 ## Show Record Detail Page
 ![Show Record Image](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/Screenshot%20from%202023-08-01%2014-42-14.png)
 
@@ -48,10 +51,21 @@ This section contains screenshots and images related to the CRM project.
 ## Blog Details Page
 ![Blog Details Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/blog_detail.png)
 
-## User Profile Page
-![User Profile Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/user_profile.png)
-## Project Status
+## User Profile Page with followers and following counts
+![User Profile Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/self_profile.png)
 
+## Other User profile Page from where we can follow other users and send messages them and can see their following and followers count.
+![Other User Profile Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/other_user.png)
+
+## Message Sending Page after click on send message button on the user profile page.
+![Message Sending Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/msg.png)
+
+## Message Inbox Page where the user can see all messages.
+![Message Inbox Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/inbox.png)
+
+## Message Reply Page
+![Message Reply Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/reply.png)
+## Project Status
 This CRM project is actively maintained and open for contributions. We welcome your feedback, bug reports, and feature requests.
 
 ## Contributing
