@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 <style>
 .profile-image-container {
     width: 400px;
@@ -46,11 +47,47 @@
         </div>
     </div>
     <div class="profile-counts">
-    <p><strong>Followers:</strong> {{ user_profile.followers.count }}</p>
-    <p><strong>Following:</strong> {{ user_profile.followings.count }}</p>
-    {% if user.is_authenticated and user != author %}
-    <a href="{% url 'send_message' author.id %}" class="btn btn-primary message-button">Send Message</a>
-    {% endif %}
+        <p><strong>Followers:</strong> {{ user_profile.followers.count }}</p>
+        <p><strong>Following:</strong> {{ user_profile.followings.count }}</p>
+        {% if user.is_authenticated and user != author %}
+            <a href="{% url 'send_message' author.id %}" class="btn btn-secondary message-button">Send Message</a>
+        {% endif %}
+    </div>
 </div>
+
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="followers-section">
+                <h6>Followers</h6>
+                <table class="table table-bordered">
+                    <tbody>
+                        {% for follower in user_profile.followers.all %}
+                            <tr>
+                                <td><a href="{% url 'author_profile' follower.id %}" class="profile-link">{{ follower.username }}</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="following-section">
+                <h6>Following</h6>
+                <table class="table table-bordered">
+                    <tbody>
+                        {% for following in user_profile.followings.all %}
+                            <tr>
+                                <td><a href="{% url 'author_profile' following.id %}" class="profile-link">{{ following.username }}</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
+
+
