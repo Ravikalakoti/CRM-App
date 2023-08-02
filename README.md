@@ -14,6 +14,7 @@ This CRM (Customer Relationship Management) project is designed to efficiently m
 <b>View Blog Post:</b> View individual blog posts with full content and author details.<br>
 <b>Add New Blog Post:</b> Allow users to add new blog posts to share insights and updates.<br>
 <b>Author Profile:</b> Display author profiles with their details and a list of published blog posts.<br>
+<b>Follow/Unfollow Functionality:Implement functionality for users to follow and unfollow other users.<br>
 
 # Technologies Used:
 <b>Django:</b> A powerful Python web framework used for back-end development.<br>
@@ -33,8 +34,8 @@ This section contains screenshots and images related to the CRM project.
 ## Add New Record Page
 ![Registration Image](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/Screenshot%20from%202023-08-01%2014-08-37.png)
 
-## Add multiple records using excel sheet upload data and record creation in bulk
-## sample sheet https://docs.google.com/spreadsheets/d/15T9-KhRmAwikI70_X7MswYkDQY7dLsntbSHEHKxI02g/edit?usp=sharing
+## Add multiple records using Excel sheet upload data and record creation in bulk
+sample sheet https://docs.google.com/spreadsheets/d/15T9-KhRmAwikI70_X7MswYkDQY7dLsntbSHEHKxI02g/edit?usp=sharing
 ![Upload Excele File Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/import.png)
 
 ## Show Record Detail Page
@@ -55,7 +56,7 @@ This section contains screenshots and images related to the CRM project.
 ## User Profile Page with followers and following counts
 ![User Profile Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/self_profile.png)
 
-## Other User profile Page from where we can follow other users and send messages them and can see their following and followers count.
+## Other User profile Page from where we can follow other users and send messages to them and can see their following and followers count.
 ![Other User Profile Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/other_user.png)
 
 ## Message Sending Page after click on send message button on the user profile page.
