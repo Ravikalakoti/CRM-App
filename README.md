@@ -34,6 +34,7 @@ This section contains screenshots and images related to the CRM project.
 ![Registration Image](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/Screenshot%20from%202023-08-01%2014-08-37.png)
 
 ## Add multiple records using excel sheet upload data and record creation in bulk
+## sample sheet https://docs.google.com/spreadsheets/d/15T9-KhRmAwikI70_X7MswYkDQY7dLsntbSHEHKxI02g/edit?usp=sharing
 ![Upload Excele File Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/import.png)
 
 ## Show Record Detail Page
