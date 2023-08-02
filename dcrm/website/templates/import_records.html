@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title text-left">Import Records from Excel</h1>
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            {{ form.file.label_tag }}
+                            {{ form.file }}
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-secondary w-100">Import</button>
+                            </div>
+                            <div class="col-6">
+                                <a href="{% url 'home' %}" class="btn btn-secondary w-100">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

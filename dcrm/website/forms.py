@@ -52,3 +52,6 @@ class BlogPostForm(forms.ModelForm):
     class Meta:
         model = BlogPost
         fields = ['title', 'content']
+
+class ExcelImportForm(forms.Form):
+    file = forms.FileField()
