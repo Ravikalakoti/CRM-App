@@ -17,4 +17,8 @@ urlpatterns = [
     path('import/', views.import_records, name='import_records'),
     path('follow/<int:author_id>/', views.follow_user, name='follow'),
     path('unfollow/<int:author_id>/', views.unfollow_user, name='unfollow'),
+    path('send_message/<int:recipient_id>/', views.send_message, name='send_message'),
+    path('inbox/', views.inbox, name='inbox'),
+    path('mark_read/<int:message_id>/', views.mark_message_as_read, name='mark_read'),
+    path('reply_to_message/<int:message_id>/', views.reply_to_message, name='reply_to_message'),
 ]

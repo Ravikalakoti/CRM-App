@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Reply Sent Successfully</h1>
+    <hr>
+    <p>Your reply has been sent successfully to {{ reply_message.recipient.username }}.</p>
+</div>
+{% endblock %}
