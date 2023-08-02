@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Inbox</h1>
+    <hr>
+    <ul class="message-list">
+        {% for message in received_messages %}
+            <li class="message {% if not message.is_read %}unread{% endif %}">
+                <div class="message-header">
+                    <strong class="message-sender">{{ message.sender.username }}</strong>
+                    <span class="message-date">{{ message.timestamp }}</span>
+                </div>
+                <div class="message-content">
+                    {{ message.content }}
+                    {% if not message.is_read %}
+                        <a href="{% url 'mark_read' message.id %}" class="mark-read-link">Mark as Read</a>
+                    {% endif %}
+                </div>
+                <div class="message-actions">
+                    <a href="{% url 'reply_to_message' message.id %}" class="reply-button">Reply</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

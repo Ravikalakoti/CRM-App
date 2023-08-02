@@ -48,6 +48,9 @@
     <div class="profile-counts">
     <p><strong>Followers:</strong> {{ user_profile.followers.count }}</p>
     <p><strong>Following:</strong> {{ user_profile.followings.count }}</p>
+    {% if user.is_authenticated and user != author %}
+    <a href="{% url 'send_message' author.id %}" class="btn btn-primary message-button">Send Message</a>
+    {% endif %}
 </div>
 </div>
 {% endblock %}

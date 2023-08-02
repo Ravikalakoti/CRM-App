@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SignUpForm, AddRecordForm, BlogPostForm, ExcelImportForm
 from django.contrib.auth.models import User
-from .models import Record, BlogPost, UserProfile
+from .models import Record, BlogPost, UserProfile, Message
 import pandas as pd
 
 
@@ -185,3 +185,46 @@ def unfollow_user(request, author_id):
     author_profile.followers.remove(request.user)
     user_profile.followings.remove(author)
     return redirect('author_profile', author_id=author_id)
+
+
+def send_message(request, recipient_id):
+    recipient = User.objects.get(id=recipient_id)
+
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        sender = request.user
+
+        message = Message.objects.create(sender=sender, recipient=recipient, content=content)
+
+        messages.success(request, 'Message sent successfully.')
+        return redirect('author_profile', author_id=recipient_id)
+
+    return render(request, 'send_message.html', {'recipient': recipient})
+
+
+def inbox(request):
+    user = request.user
+    received_messages = Message.objects.filter(recipient=user).order_by('-timestamp')
+    return render(request, 'inbox.html', {'received_messages': received_messages})
+
+
+def mark_message_as_read(request, message_id):
+    message = Message.objects.get(id=message_id)
+    if request.user == message.recipient:
+        message.is_read = True
+        message.save()
+    return redirect('inbox')
+
+def reply_to_message(request, message_id):
+    message = get_object_or_404(Message, id=message_id)
+    
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        sender = request.user
+
+        # Create a new reply message
+        reply_message = Message.objects.create(sender=sender, recipient=message.sender, content=content)
+        
+        return render(request, 'reply_success.html', {'reply_message': reply_message})
+    
+    return render(request, 'reply_message.html', {'message': message})
