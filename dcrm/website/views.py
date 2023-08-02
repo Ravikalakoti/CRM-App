@@ -9,7 +9,31 @@ import pandas as pd
 
 def home(request):
 	records = Record.objects.all()
-	# Check to see if logging in
+	if request.user.is_authenticated:
+		user_profile = UserProfile.objects.filter(user=request.user).last()
+		followers_count = user_profile.followers.count()
+		following_count = user_profile.followings.count()
+		received_messages_count = Message.objects.filter(recipient=request.user).count()
+		send_messages_count = Message.objects.filter(sender=request.user).count()
+		blogs_count = BlogPost.objects.filter(author=request.user).count()
+		total_records = Record.objects.filter().count()
+		users_to_follow = User.objects.exclude(id=request.user.id)
+
+		context = {
+			'user_profile': user_profile,
+			'followers_count': followers_count,
+			'following_count': following_count,
+			'received_messages_count': received_messages_count,
+			'send_messages_count': send_messages_count,
+			'blogs_count': blogs_count,
+			'total_records': total_records,
+			'users_to_follow': users_to_follow
+		}
+	else:
+		context = {
+			'records': records
+		}
+
 	if request.method == 'POST':
 		username = request.POST['username']
 		password = request.POST['password']
@@ -23,7 +47,7 @@ def home(request):
 			messages.success(request, "There Was An Error Logging In, Please Try Again...")
 			return redirect('home')
 	else:
-		return render(request, 'home.html', {'records':records})
+		return render(request, 'home.html', context)
 
 
 def logout_user(request):
@@ -41,6 +65,7 @@ def register_user(request):
 			username = form.cleaned_data['username']
 			password = form.cleaned_data['password1']
 			user = authenticate(email=username, password=password)
+			UserProfile.objects.get_or_create(user=user)
 			login(request, user)
 			messages.success(request, "You Have Successfully Registered! Welcome!")
 			return redirect('home')

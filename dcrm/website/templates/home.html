@@ -1,43 +1,103 @@
 {% extends 'base.html' %}
 {% block content %}
 {% if user.is_authenticated %}
-<table class="table table-striped table-hover table-bordered">
-    <thead class="table-dark">
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Address</th>
-            <th scope="col">City</th>
-            <th scope="col">State</th>
-            <th scope="col">Zipcode</th>
-            <th scope="col">Created At</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% if records %}
-        {% for record in records %}
-        <tr>
-            <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
-            <td>{{ record.first_name }} {{ record.last_name }}</td>
-            <td>{{ record.email }}</td>
-            <td>{{ record.phone }}</td>
-            <td>{{ record.address }}</td>
-            <td>{{ record.city }}</td>
-            <td>{{ record.state }}</td>
-            <td>{{ record.zipcode }}</td>
-            <td>{{ record.created_at }}</td>
-            <td>
-            	<a href="{% url 'update_record' record.id %}" class="btn btn-primary btn-transparent"><i class="fas fa-edit"></i></a>
-                <a href="{% url 'delete_record' record.id %}" class="btn btn-danger btn-transparent"><i class="fas fa-trash"></i></a>
-            </td>
-        </tr>
-        {% endfor %}
-        {% endif %}
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-md-3">
+        <div class="card card-stats card-primary">
+            <div class="card-body">
+                <h5 class="card-title">Total Followers</h5>
+                <div class="heatmap-container">
+                    <div class="heatmap">
+                        <div class="heatmap-inner" style="width: {{ followers_count|add:followers_count }}%;"></div>
+                    </div>
+                </div>
+                <p class="heatmap-label">{{ followers_count }}</p>
+            </div>
+        </div>
+    </div>
+     <div class="col-md-3">
+        <div class="card card-stats card-secondary">
+            <div class="card-body">
+                <h5 class="card-title">Total Followings</h5>
+                <div class="heatmap-container">
+                    <div class="heatmap">
+                        <div class="heatmap-inner" style="width: {{ following_count|add:following_count }}%;"></div>
+                    </div>
+                </div>
+                <p class="heatmap-label">{{ following_count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card card-stats card-accent">
+            <div class="card-body">
+                <h5 class="card-title">Total Received Messages</h5>
+                <div class="heatmap-container">
+                    <div class="heatmap">
+                        <div class="heatmap-inner" style="width: {{ received_messages_count|add:received_messages_count }}%;"></div>
+                    </div>
+                </div>
+                <p class="heatmap-label">{{ received_messages_count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card card-stats card-ternary">
+            <div class="card-body">
+                <h5 class="card-title">Total Sent Messages</h5>
+                <div class="heatmap-container">
+                    <div class="heatmap">
+                        <div class="heatmap-inner" style="width: {{ send_messages_count|add:send_messages_count }}%;"></div>
+                    </div>
+                </div>
+                <p class="heatmap-label">{{ send_messages_count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mt-3">
+        <div class="card card-stats card-secondary">
+            <div class="card-body">
+                <h5 class="card-title">Total Blogs</h5>
+                <div class="heatmap-container">
+                    <div class="heatmap">
+                        <div class="heatmap-inner" style="width: {{ blogs_count|add:blogs_count }}%;"></div>
+                    </div>
+                </div>
+                <p class="heatmap-label">{{ blogs_count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mt-3">
+        <div class="card card-stats card-primary">
+            <div class="card-body">
+                <h5 class="card-title">Total System Records</h5>
+                <div class="heatmap-container">
+                    <div class="heatmap">
+                        <div class="heatmap-inner" style="width: {{ total_records|add:total_records }}%;"></div>
+                    </div>
+                </div>
+                <p class="heatmap-label">{{ total_records }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-md-12">
+        <h3 class="mb-3">Discover People</h3>
+        <ul class="list-group">
+            {% for user_to_follow in users_to_follow %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="{% url 'author_profile' user_to_follow.id %}" class="text-decoration-none">{{ user_to_follow.username }}</a>
+                {% if user_to_follow in user_profile.followings.all %}
+                    <a href="{% url 'author_profile' user_to_follow.id %}" class="btn btn-primary btn-sm">UnFollow</a>
+                {% else %}
+                    <a href="{% url 'author_profile' user_to_follow.id %}" class="btn btn-primary btn-sm">Follow</a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% else %}
 <div class="col-md-6 offset-md-3">
 <h1>Login</h1>
