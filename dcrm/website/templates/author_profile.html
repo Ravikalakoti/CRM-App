@@ -1,26 +1,46 @@
 {% extends 'base.html' %}
 {% block content %}
-{% load static %}
 <style>
-.profile-image-container {
-    width: 400px;
-    height: 400px;
-    position: relative; /* Add relative positioning */
-    overflow: hidden;
-}
+    .profile-image-container {
+        width: 400px;
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+    }
 
-.profile-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
+    .profile-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
 
-.follow-button {
-    position: absolute;
-    bottom: 0; /* Position at the bottom */
-    right: 0; /* Position at the right */
-    margin: 10px; /* Add some margin for spacing */
-}
+    .follow-button {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 10px;
+    }
+
+    /* Additional responsive styles */
+    @media (max-width: 767px) {
+        .col-md-8 {
+            margin-top: 20px;
+        }
+
+        .profile-counts {
+            margin-top: 20px;
+        }
+
+        .followers-section,
+        .following-section {
+            margin-top: 20px;
+        }
+
+        .followers-section h6,
+        .following-section h6 {
+            font-size: 18px;
+        }
+    }
 </style>
 
 <div class="container">
@@ -41,21 +61,46 @@
             <h1>{{ author.username }}'s Profile</h1>
             <hr>
             <p class="card-text"><strong>User Name:</strong> {{ author.first_name }} {{ author.last_name }}</p>
+            {% if not job_prifle %}
+            <p class="card-text"><strong>Job Profile:</strong> Developer</p>
+            {% else %}
+            <p class="card-text"><strong>Job Profile:</strong> {{ job_profile }}</p>
+            {% endif %}
             <p class="card-text"><strong>Email:</strong> {{ author.email }}</p>
             <p class="card-text"><strong>Last Login:</strong> {{ author.last_login }}</p>
             <p class="card-text"><strong>Date Joined:</strong> {{ author.date_joined }}</p>
-        </div>
+            <p class="card-text">
+                <strong style="display: inline-block; margin-right: 5px;">Education Details:</strong>
+                {% if user.is_authenticated and user == author %}
+                <a href="{% url 'add_higher_education' %}" class="btn btn-secondary btn-sm" style="display: inline-block; vertical-align: middle; padding-bottom: 1px; padding-top: 1px;">+</a>
+                {% endif %}
+                {% if education_details %}
+                <ul>
+                    {% for education in education_details %}
+                    <li>
+                        <strong>{{ education.degree }}</strong> in {{ education.field_of_study }}<br>
+                        {{ education.institution }} ({{ education.start_year }} - {{ education.end_year }})
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </p>
+         </div>
     </div>
     <div class="profile-counts">
         <p><strong>Followers:</strong> {{ user_profile.followers.count }}</p>
         <p><strong>Following:</strong> {{ user_profile.followings.count }}</p>
+        <p><strong>Blogs:</strong> {{ blogs }}</p>
+        {% if user.is_authenticated and user == author %}
+        <!-- <a href="{% url 'add_higher_education' %}" class="btn btn-primary">Add Higher Education</a> -->
+        {% endif %}
         {% if user.is_authenticated and user != author %}
             <a href="{% url 'send_message' author.id %}" class="btn btn-secondary message-button">Send Message</a>
         {% endif %}
     </div>
 </div>
 
-
+{% if user_profile.followers.count or user_profile.followings.count %}
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-6">
@@ -88,6 +133,5 @@
         </div>
     </div>
 </div>
+{% endif %}
 {% endblock %}
-
-

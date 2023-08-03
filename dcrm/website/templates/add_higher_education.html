@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Add Higher Education Detail</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-2 row">
+                            <label for="{{ form.degree.id_for_label }}" class="col-md-3 col-form-label">Degree</label>
+                            <div class="col-md-9">
+                                {{ form.degree }}
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <label for="{{ form.degree.id_for_label }}" class="col-md-3 col-form-label">Field Of Study</label>
+                            <div class="col-md-9">
+                                {{ form.field_of_study }}
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <label for="{{ form.institution.id_for_label }}" class="col-md-3 col-form-label">Institution</label>
+                            <div class="col-md-9">
+                                {{ form.institution }}
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <label for="{{ form.start_year.id_for_label }}" class="col-md-3 col-form-label">Start Year</label>
+                            <div class="col-md-9">
+                                {{ form.start_year }}
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <label for="{{ form.end_year.id_for_label }}" class="col-md-3 col-form-label">End Year</label>
+                            <div class="col-md-9">
+                                {{ form.end_year }}
+                            </div>
+                        </div>
+                        <div class="text-left">
+                            <button type="submit" class="btn btn-secondary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

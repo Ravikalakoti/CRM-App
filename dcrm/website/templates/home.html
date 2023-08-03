@@ -70,13 +70,26 @@
     <div class="col-md-3 mt-3">
         <div class="card card-stats card-primary">
             <div class="card-body">
-                <h5 class="card-title">Total System Records</h5>
+                <h5 class="card-title">Total Added Records</h5>
                 <div class="heatmap-container">
                     <div class="heatmap">
                         <div class="heatmap-inner" style="width: {{ total_records|add:total_records }}%;"></div>
                     </div>
                 </div>
                 <p class="heatmap-label">{{ total_records }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mt-3">
+        <div class="card card-stats card-secondary">
+            <div class="card-body">
+                <h5 class="card-title">Total Active Users</h5>
+                <div class="heatmap-container">
+                    <div class="heatmap">
+                        <div class="heatmap-inner" style="width: {{ active_users|add:active_users }}%;"></div>
+                    </div>
+                </div>
+                <p class="heatmap-label">{{ active_users }}</p>
             </div>
         </div>
     </div>

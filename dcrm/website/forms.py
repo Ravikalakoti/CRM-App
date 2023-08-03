@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Record, BlogPost
+from .models import Record, BlogPost, Education
 
 
 class SignUpForm(UserCreationForm):
@@ -55,3 +55,9 @@ class BlogPostForm(forms.ModelForm):
 
 class ExcelImportForm(forms.Form):
     file = forms.FileField()
+
+
+class HigherEducationForm(forms.ModelForm):
+    class Meta:
+        model = Education
+        fields = ['degree', 'field_of_study', 'institution', 'start_year', 'end_year']
