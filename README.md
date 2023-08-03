@@ -25,8 +25,8 @@ This CRM (Customer Relationship Management) project is designed to efficiently m
 # Project Screenshots
 This section contains screenshots and images related to the CRM project.
 
-## Dashboard CRM which shows the stats followers, following, blogs, messages, etc and users.
-![CRM Dashboard](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/homepage_stats.png)
+## Dashboard CRM which shows the stats followers, following, blogs, messages, etc, and users list with theire profile images.
+![CRM Dashboard](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/updated-dashboard.png)
 
 ## Registration Or SignUp Page
 ![Registration Image](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/Screenshot%20from%202023-08-01%2014-09-04.png)
