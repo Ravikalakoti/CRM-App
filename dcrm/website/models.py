@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_image')
     profile_image = models.ImageField(upload_to='profile_images/', null=True, blank=True)
     job_profile = models.CharField(max_length=200, null=True, blank=True)
     followers = models.ManyToManyField(User, related_name='following', blank=True)
