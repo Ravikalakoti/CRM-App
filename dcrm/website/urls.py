@@ -21,4 +21,5 @@ urlpatterns = [
     path('inbox/', views.inbox, name='inbox'),
     path('mark_read/<int:message_id>/', views.mark_message_as_read, name='mark_read'),
     path('reply_to_message/<int:message_id>/', views.reply_to_message, name='reply_to_message'),
+    path('add_higher_education/', views.add_higher_education, name='add_higher_education'),
 ]

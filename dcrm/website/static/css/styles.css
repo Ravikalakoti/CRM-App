@@ -1,0 +1,65 @@
+
+.heatmap-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.heatmap {
+  position: relative;
+  width: 200px;
+  height: 25px;
+  background-color: #ddd;
+}
+
+.heatmap-inner {
+  position: center;
+  width: 0;
+  height: 100%;
+  background-color: #007bff;
+}
+
+.heatmap-label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+.card-primary {
+    background-color: #7eaab2; /* Change this to your desired color */
+    border: none;
+    color: #fff; /* Text color for better contrast */
+}
+.card-secondary {
+    background-color: #e74c3c;
+    border: none;
+    color: #fff;
+}
+ .card-accent {
+    background-color: #f39c12;
+    border: none;
+    color: #fff;
+}
+.card-ternary {
+    background-color: #7fb59c;
+    border: none;
+    color: #fff;
+}
+.profile-counts {
+    display: flex; /* Use flexbox to align items horizontally */
+    align-items: center; /* Center items vertically within the flex container */
+    margin-top: 10px; /* Add some margin for spacing */
+}
+
+.profile-counts p {
+    margin-right: 20px; /* Add spacing between follower and following counts */
+}
+
+.message-button {
+    margin-left: right; /* Push the button to the right side of the flex container */
+    font-size: 14px;
+    padding: 5px 10px;
+    margin-top:-16px;
+}
+.profile-link {
+    color: black; /* Set the color to black */
+    text-decoration: none; /* Remove underline */
+}

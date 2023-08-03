@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignUpForm, AddRecordForm, BlogPostForm, ExcelImportForm
+from .forms import SignUpForm, AddRecordForm, BlogPostForm, ExcelImportForm, HigherEducationForm
 from django.contrib.auth.models import User
-from .models import Record, BlogPost, UserProfile, Message
+from .models import Record, BlogPost, UserProfile, Message, Education
 import pandas as pd
 
 
@@ -27,7 +27,8 @@ def home(request):
 			'send_messages_count': send_messages_count,
 			'blogs_count': blogs_count,
 			'total_records': total_records,
-			'users_to_follow': users_to_follow
+			'users_to_follow': users_to_follow,
+			'active_users': User.objects.filter(is_active=True).count()
 		}
 	else:
 		context = {
@@ -150,16 +151,21 @@ def add_blog_post(request):
 def author_profile(request, author_id):
     author = get_object_or_404(User, id=author_id)
 
+    blogs_count = BlogPost.objects.filter(author=author).count()
     profile_instance = UserProfile.objects.filter(user=author)
+    education_details = author.education.all()
+
     if profile_instance:
-    	image_url = profile_instance.last().profile_image.url
+    	image_url = profile_instance.last().profile_image.url if profile_instance.last().profile_image else None
     	user_profile = profile_instance.last()
     else:
     	image_url = 'https://images.unsplash.com/photo-1608231857279-40bea0778f5f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=100&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY5MDk1NTQ1NQ&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=100'
     return render(request, 'author_profile.html', {
     	'author': author,
     	'image_url': image_url,
-    	'user_profile': user_profile
+    	'user_profile': user_profile,
+    	'blogs': blogs_count,
+    	'education_details': education_details
     })
 
 
@@ -253,3 +259,16 @@ def reply_to_message(request, message_id):
         return render(request, 'reply_success.html', {'reply_message': reply_message})
     
     return render(request, 'reply_message.html', {'message': message})
+
+
+def add_higher_education(request):
+    if request.method == 'POST':
+        form = HigherEducationForm(request.POST)
+        if form.is_valid():
+            education = form.save(commit=False)
+            education.user = request.user
+            education.is_higher_education = True
+            education.save()
+            return redirect('author_profile', author_id=request.user.id)
+
+    return render(request, 'add_higher_education.html', {'form': HigherEducationForm()})
