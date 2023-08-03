@@ -56,8 +56,8 @@ sample sheet https://docs.google.com/spreadsheets/d/15T9-KhRmAwikI70_X7MswYkDQY7
 ## Blog Details Page
 ![Blog Details Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/blog_detail.png)
 
-## User Profile Page with followers and following counts
-![User Profile Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/self_profile.png)
+## User Profile Page (counts of blogs, followers, following), now user can add education detail by clicking on + icon on their profile page
+![User Profile Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/aug3profile.png)
 
 ## Other User profile Page from where we can follow other users and send messages to them and can see their following and followers count.
 ![Other User Profile Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/updated_profile_image.png)
@@ -70,6 +70,10 @@ sample sheet https://docs.google.com/spreadsheets/d/15T9-KhRmAwikI70_X7MswYkDQY7
 
 ## Message Reply Page
 ![Message Reply Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/reply.png)
+
+## Add education Detail Page
+![Education Details Page](https://github.com/Ravikalakoti/CRM-App/blob/main/dcrm/Images/education.png)
+
 ## Project Status
 This CRM project is actively maintained and open for contributions. We welcome your feedback, bug reports, and feature requests.
 
